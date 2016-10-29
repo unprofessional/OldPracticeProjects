@@ -23,7 +23,7 @@ public class FindMissingNum {
 		System.out.println();
 		
 		startTime = System.nanoTime();
-		System.out.println("FINAL RESULT: " + FindMissingNumNaive.bruteForceMissingNum(missingNum));
+		System.out.println("(NAIVE 1) FINAL RESULT: " + FindMissingNumNaive.bruteForceMissingNum(missingNum));
 		endTime = System.nanoTime();
 		System.out.println("runtime(nano): " + (endTime - startTime));
 		System.out.println("runtime(ms): " + (endTime - startTime)/1000000);
@@ -31,7 +31,7 @@ public class FindMissingNum {
 		System.out.println();
 		
 		startTime = System.nanoTime();
-		System.out.println("FINAL RESULT: " + FindMissingNumNaive.calculateMissingNum(missingNum));
+		System.out.println("(NAIVE 2) FINAL RESULT: " + FindMissingNumNaive.calculateMissingNum(missingNum));
 		endTime = System.nanoTime();
 		System.out.println("runtime(nano): " + (endTime - startTime));
 		System.out.println("runtime(ms): " + (endTime - startTime)/1000000);
@@ -39,7 +39,7 @@ public class FindMissingNum {
 		System.out.println();
 		
 		startTime = System.nanoTime();
-		System.out.println("FINAL RESULT: " + drillDown(0, missingNum.length));
+		System.out.println("(BEST SOLUTION) FINAL RESULT: " + recursiveSolution(0, missingNum.length));
 		endTime = System.nanoTime();
 		System.out.println("runtime(nano): " + (endTime - startTime));
 		System.out.println("runtime(ms): " + (endTime - startTime)/1000000);
@@ -47,19 +47,10 @@ public class FindMissingNum {
 	}
 	
 	// Recursive range testing
-	public static int drillDown(int indexA, int indexB) {
+	public static int recursiveSolution(int indexA, int indexB) {
 		
 		int midIndex = (indexA + indexB)/2;
 		int midValue = missingNum[midIndex];
-//		System.out.println("midIndex: " + midIndex);
-//		System.out.println("midValue: " + midValue);
-//		
-//		System.out.println("indexA: " + indexA);
-//		System.out.println("indexB/2: " + indexB/2);
-//		System.out.println("indexB: " + indexB);
-//		System.out.println("ValOf[A]: " + missingNum[indexA]);
-//		System.out.println("ValOf[B/2]: " + missingNum[(indexB)/2]);
-//		System.out.println("ValOf[B]: " + missingNum[indexB - 1]);
 		
 		// Currently set up for evens, not odds
 		int answer = 9998;
@@ -78,12 +69,12 @@ public class FindMissingNum {
 //				System.out.println("Problem is in first half");
 //				System.out.println("Checking range(" + indexA + ", " + midIndex + ")");
 //				System.out.println();
-				return drillDown(indexA, midIndex);
+				return recursiveSolution(indexA, midIndex);
 			} else {
 //				System.out.println("Problem is in second half");
 //				System.out.println("Checking range(" + midIndex + ", " + indexB + ")");
 //				System.out.println();
-				return drillDown(midIndex, indexB);
+				return recursiveSolution(midIndex, indexB);
 			}
 		}
 	}

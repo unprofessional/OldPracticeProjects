@@ -38,14 +38,12 @@ public class DeepestPit {
 		// Q is the bottom of the pit
 
 		int p = 0, q = 0, r = 0;
-		int currentDeepest = 0;
 		int iteration = 0;
 
 		boolean goingDown = false;
 
 		ArrayList<Integer> storeIterations = new ArrayList<Integer>();
 
-		// TODO:
 		for (int i = 1; i < arr.length; i++) {
 
 			// Down case
